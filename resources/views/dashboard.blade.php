@@ -154,11 +154,11 @@
                     </table>
                 </div>
 
-                @if ($jobs->hasPages())
+                {{-- @if ($jobs->hasPages())
                     <div class="px-6 py-4 border-t border-slate-100">
                         {{ $jobs->links() }}
                     </div>
-                @endif
+                @endif --}}
             </div>
         </div>
     </div>
