@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobPost as Job;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class AdminController extends Controller
 {
@@ -21,13 +22,20 @@ class AdminController extends Controller
         $totalApplications = Job::sum('applications_count');
         $totalCompanies = Job::distinct('company')->count('company');
 
-        return view('dashboard', compact(
-            'jobs',
-            'totalJobs',
-            'activeJobs',
-            'totalApplications',
-            'totalCompanies'
-        ));
+        // return view('dashboard', compact(
+            // 'jobs',
+            // 'totalJobs',
+            // 'activeJobs',
+            // 'totalApplications',
+            // 'totalCompanies'
+        // ));
+        return Inertia::render('Admin/Dashboard', [
+            'jobs' => $jobs,
+            'totalJobs' => $totalJobs,
+            'activeJobs' => $activeJobs,
+            'totalApplications' => $totalApplications,
+            'totalCompanies' => $totalCompanies,
+        ]);
     }
 
     /**

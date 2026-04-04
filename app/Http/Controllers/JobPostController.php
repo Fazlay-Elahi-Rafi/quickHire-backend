@@ -110,7 +110,9 @@ class JobPostController extends Controller
             $job = JobPost::create($validated);
         }
 
-        return response()->json(['success' => true, 'data' => $job]);
+        // return response()->json(['success' => true, 'data' => $job]);
+
+        return redirect()->back();
     }
 
 
@@ -122,10 +124,7 @@ class JobPostController extends Controller
         $job->status = $job->status ? 0 : 1;
         $job->save();
 
-        return response()->json([
-            'success' => true,
-            'status'  => $job->status,
-        ]);
+        return redirect()->back();
     }
 
     /**
